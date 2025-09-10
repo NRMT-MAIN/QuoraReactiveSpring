@@ -2,8 +2,7 @@ package com.example.demo.services;
 
 import java.time.LocalDateTime;
 
-
-
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.adapter.QuestionAdapter;
@@ -23,14 +22,13 @@ public class QuestionService implements IQuestionService {
 	
 	@Override
 	public Mono<QuestionResponseDTO> getQuestionById(String id) {
-	    return questRepo.findById(id)
-	        .doOnNext(question -> System.out.println("Fetched Question: " + question))
-	        .map(QuestionAdapter::toQuestionResponseDTO)
-	        .switchIfEmpty(Mono.error(new RuntimeException("Question not found for ID: " + id)))
-	        .doOnError(error -> System.out.println("Error fetching question: " + error))
-	        .doOnSuccess(response -> System.out.println("Question fetched successfully: " + response));
+		// TODO Auto-generated method stub
+		return questRepo.findById(id)
+				.map(QuestionAdapter :: toQuestionResponseDTO)
+				.doOnError(error -> System.out.println("Error fetching questions: " + error))
+	            .doOnSuccess(response -> System.out.println("Questions fetched successfully " + response));
+				
 	}
-
 	
 	@Override
 	public Mono<QuestionResponseDTO> createQuestion(QuestionRequestDTO questionRequestDTO) {

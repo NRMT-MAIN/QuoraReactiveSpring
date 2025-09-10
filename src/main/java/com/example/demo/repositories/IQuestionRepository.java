@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
