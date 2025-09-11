@@ -41,8 +41,8 @@ public class QuestionController {
     
     @GetMapping()  
     public Flux<QuestionResponseDTO> getAllQuestions(  
-            @RequestParam(required = false) String cursor,  
-            @RequestParam(defaultValue = "10") int size  
+            @RequestParam(name = "cursor" , required = false) String cursor,  
+            @RequestParam(name ="size" ,defaultValue = "10") int size  
     ) {  
         return questService.getAllQuestions(cursor, size)  
                 .doOnError(error -> System.out.println("Error fetching questions: " + error))  
@@ -57,7 +57,7 @@ public class QuestionController {
     }  
   
     @GetMapping("/search")  
-    public Flux<QuestionResponseDTO> searchQuestions(  
+    public Flux<QuestionResponseDTO> searchQuestions(
             @RequestParam String query,  
             @RequestParam(defaultValue = "0") int offset,  
             @RequestParam(defaultValue = "10") int page  

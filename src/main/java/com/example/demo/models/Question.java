@@ -24,7 +24,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 public class Question {
 
 	@Id
-	private String Id; 
+	private String id; 
 	
 	@NotBlank(message = "Title is required")
     @Size(min = 10, max = 100, message = "Title must be between 10 and 100 characters")
